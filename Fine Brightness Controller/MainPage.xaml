@@ -1,0 +1,56 @@
+﻿<Page
+    x:Class="Fine_Brightness_Controller.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Fine_Brightness_Controller"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <!--<Button x:Name="button" Content="-" HorizontalAlignment="Left" Margin="283,290,0,0" VerticalAlignment="Top" Height="114" Width="257" FontSize="72"/>
+        <Button x:Name="button_Copy" Content="+" HorizontalAlignment="Left" Margin="907,290,0,0" VerticalAlignment="Top" Height="114" Width="257" FontSize="72"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="0,484,0,0" Text="Increase main brigtness level" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24"/>
+        <Button x:Name="button_Copy1" Content="-" HorizontalAlignment="Left" Margin="490,662,0,0" VerticalAlignment="Top" Height="87" Width="179" FontSize="72"/>
+        <Button x:Name="button_Copy2" Content="+" HorizontalAlignment="Left" Margin="926,662,0,0" VerticalAlignment="Top" Height="87" Width="179" FontSize="72"/>
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="750,811,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="234" FontSize="22"><Run Text="Increase step size"/><LineBreak/><Run/></TextBlock>-->
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="main_minus" 
+                Click="{x:Bind Path=ViewModel.MainMinusClick}" IsEnabled="{x:Bind Path=ViewModel.isMainMinusEnabled, Mode=OneWay}"
+                Content="-" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="36"/>
+        <Button x:Name="main_plus" 
+                Click="{x:Bind Path=ViewModel.MainPlusClick}" IsEnabled="{x:Bind Path=ViewModel.isMainPlusEnabled, Mode=OneWay}"
+                Content="+" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="36"/>
+        <Button x:Name="step_minus" 
+                Click="{x:Bind Path=ViewModel.StepMinusClick}" IsEnabled="{x:Bind Path=ViewModel.isStepMinusEnabled, Mode=OneWay}"
+                Content="-" HorizontalAlignment="Stretch" Grid.Row="2" VerticalAlignment="Stretch" FontSize="24"/>
+        <Button x:Name="step_plus" 
+                Click="{x:Bind Path=ViewModel.StepPlusClick}" IsEnabled="{x:Bind Path=ViewModel.isStepPlusEnabeld, Mode=OneWay}"
+                Content="+" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="2" VerticalAlignment="Stretch" FontSize="24"/>
+        
+        <TextBlock x:Name="main_text" HorizontalAlignment="Right" Grid.Row="1" Text="main brightness level" TextWrapping="Wrap" VerticalAlignment="Center"/>
+        <TextBlock x:Name="step_text" HorizontalAlignment="Right" Grid.Row="3" Text="step size" TextWrapping="Wrap" VerticalAlignment="Center"/>
+        
+        <TextBox x:Name="main_value" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="1" 
+                 Text="{x:Bind Path=ViewModel.BrightnessLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                 VerticalAlignment="Stretch" PlaceholderText="value"/>
+        <TextBox x:Name="step_value" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="3" 
+                 Text="{x:Bind Path=ViewModel.StepValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                 VerticalAlignment="Stretch" PlaceholderText="value"/>
+
+
+
+    </Grid>
+</Page>
